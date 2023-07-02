@@ -2,8 +2,7 @@ package com.test.config;
 
 public enum UserRole {
 
-    ROLE_READER("INVESTOR"),
-    ROLE_WRITER("USER"),
+    ROLE_INVESTOR("INVESTOR"),
     ROLE_ADMIN("ADMIN");
 
     private final String role;
