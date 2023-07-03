@@ -21,9 +21,10 @@ public class CustomUserController {
     }
 
     @PostMapping("/register")
+    @PreAuthorize("isAnonymous()")
     public ResponseEntity<String> registerUser(@RequestBody CustomUserCommand customUserCommand) {
         jpaUserDetailsService.register(customUserCommand);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>("OK",HttpStatus.CREATED);
     }
 
     @GetMapping("/get")

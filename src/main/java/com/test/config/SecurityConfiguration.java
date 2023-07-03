@@ -29,6 +29,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         // Configure the SecurityFilterChain
         http
+                .csrf().disable()
                 .authorizeHttpRequests(authorize -> authorize
                         .anyRequest().permitAll()
                 )
@@ -39,7 +40,7 @@ public class SecurityConfiguration {
     public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
         UserDetails user = User.withUsername("Tamas")
                 .password(passwordEncoder.encode("pwd1234"))
-                .roles("admin")
+                .roles("ADMIN")
                 .build();
         return new InMemoryUserDetailsManager(user);
     }
